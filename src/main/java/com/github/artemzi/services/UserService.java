@@ -5,9 +5,7 @@ import com.github.artemzi.dao.contract.DAO;
 import com.github.artemzi.exceptions.DAOException;
 import com.github.artemzi.pojo.User;
 import com.github.artemzi.utility.Helpers;
-import com.google.common.hash.Hashing;
 
-import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
