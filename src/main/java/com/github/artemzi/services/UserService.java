@@ -19,6 +19,8 @@ public class UserService implements DAO<User> {
     private Factory connectionManager;
     private static final String SQL_SELECT_ALL = "SELECT u.id, u.name, u.email, u.password, r.name AS role " +
             "FROM users u JOIN roles r ON r.id = u.role_id";
+    private static final String SQL_SELECT_BY_EMAIL = "SELECT u.id, u.name, u.email, u.password, r.name AS role, u.role_id\n" +
+            "FROM users u JOIN roles r ON r.id = u.role_id WHERE u.email LIKE ?";
     private static final String SQL_INSERT = "INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?)";
     private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
 
@@ -46,6 +48,36 @@ public class UserService implements DAO<User> {
             return false;
         }
         return true;
+    }
+
+    public boolean checkAuth(String email, String password) {
+        User user = getUserByEmail(email);
+        return user != null && user.getPassword().equals(Helpers.hashPassword(password));
+    }
+
+    private User getUserByEmail(String email) {
+        User user = null;
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement statement = prepareStatement(connection, SQL_SELECT_BY_EMAIL, false, email);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                user = map(resultSet);
+            }
+        } catch (SQLException e) {
+            throw new DAOException("Cannot get user by email" + e);
+        }
+        return user;
+    }
+
+    private User map(ResultSet resultSet) throws SQLException {
+        return new User(
+                resultSet.getInt("id"),
+                resultSet.getString("name"),
+                resultSet.getString("email"),
+                resultSet.getString("password"),
+                resultSet.getString("role"),
+                resultSet.getInt("role_id")
+        );
     }
 
     @Override

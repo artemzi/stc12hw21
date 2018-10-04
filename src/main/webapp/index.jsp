@@ -3,8 +3,8 @@
 
 <%
     session=request.getSession(false);
-    if(session.getAttribute("authenticated")==null) {
-        response.sendRedirect("login.jsp");
+    if(session.getAttribute("authenticated") == null | "fail".equals(session.getAttribute("authenticated"))) {
+        response.sendRedirect("/login.jsp");
     }
 
 %>
