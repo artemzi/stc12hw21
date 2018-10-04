@@ -14,10 +14,12 @@ import java.util.List;
 
 import static com.github.artemzi.dao.Utils.prepareStatement;
 
-public class UserService implements DAO {
+public class UserService implements DAO<User> {
     private Factory connectionManager;
     private static final String SQL_SELECT_ALL = "SELECT u.id, u.name, u.email, u.password, r.name AS role " +
             "FROM users u JOIN roles r ON r.id = u.role_id";
+    private static final String SQL_INSERT = "INSERT INTO users VALUES (DEFAULT, ?, ?, ?, ?)";
+    private static final String SQL_DELETE = "DELETE FROM users WHERE id=?";
 
     public UserService() {
         this.connectionManager = Factory.getInstance("javabase.jdbc");
@@ -28,15 +30,40 @@ public class UserService implements DAO {
     }
 
     @Override
-    public boolean add(String user) {
-        // TODO
-        return false;
+    public boolean add(User user) {
+        Object[] values = {
+                user.getName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getRole()
+        };
+
+        try (Connection connection = connectionManager.getConnection();
+             PreparedStatement statement = prepareStatement(connection, SQL_INSERT, false, values)) {
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Add user failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return true;
     }
 
     @Override
-    public boolean delete(String user) {
-        // TODO
-        return false;
+    public boolean delete(User user) {
+        try (
+                Connection connection = connectionManager.getConnection();
+                PreparedStatement statement = prepareStatement(connection, SQL_DELETE, false, user.getId());
+        ) {
+            int affectedRows = statement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new DAOException("Delete user failed, no rows affected.");
+            }
+        } catch (SQLException e) {
+            throw new DAOException(e);
+        }
+        return true;
     }
 
     @Override

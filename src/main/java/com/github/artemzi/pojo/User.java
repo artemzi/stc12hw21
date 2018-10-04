@@ -6,7 +6,7 @@ import java.util.Objects;
 public class User implements Serializable {
     private long id;
     private String name;
-    private String email;
+    private String email; // TODO: make field unique
     private String password;
     private String role;
 

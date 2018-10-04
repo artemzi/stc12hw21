@@ -110,9 +110,9 @@
                             <label class="sr-only" for="role">Choose role</label>
                             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
                                 <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-user-circle"></i></div>
-                                <select class="form-control" id="role">
-                                    <option value="user">User</option>
-                                    <option value="teacher">Teacher</option>
+                                <select class="form-control" id="role"> <%-- TODO: remove hardcoded options; use roles records from database --%>
+                                    <option value="2">User</option>
+                                    <option value="1">Teacher</option>
                                 </select>
                             </div>
                         </div>
