@@ -4,6 +4,7 @@ import com.github.artemzi.dao.Factory;
 import com.github.artemzi.dao.contract.DAO;
 import com.github.artemzi.exceptions.DAOException;
 import com.github.artemzi.pojo.User;
+import com.github.artemzi.utility.Helpers;
 import com.google.common.hash.Hashing;
 
 import java.nio.charset.StandardCharsets;
@@ -36,10 +37,7 @@ public class UserService implements DAO<User> {
             return false;
         }
 
-        String passwordHashed = Hashing.sha256()
-                .hashString(password, StandardCharsets.UTF_8)
-                .toString();
-
+        String passwordHashed = Helpers.hashPassword(password);
         User user = new User(name, email, passwordHashed, roleId);
         return add(user);
     }
