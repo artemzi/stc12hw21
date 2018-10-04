@@ -15,7 +15,7 @@
 
     <jsp:body>
         <div class="container">
-            <form class="form-horizontal" role="form" method="POST" action="user/register" style="margin-top: 5rem;">
+            <form class="form-horizontal" role="form" method="POST" action="/user/register" style="margin-top: 5rem;">
                 <div class="row">
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
@@ -123,7 +123,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Register</button>
-                        <a class="btn btn-link" href="login.jsp">Back to Login page</a>
+                        <a class="btn btn-link" href="/user/login">Back to Login page</a>
                     </div>
                 </div>
             </form>

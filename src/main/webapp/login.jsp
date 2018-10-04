@@ -3,7 +3,7 @@
 
 <t:default>
     <div class="container">
-        <form class="form-horizontal" role="form" method="POST" action="user/login" style="margin-top: 5rem;">
+        <form class="form-horizontal" role="form" method="POST" action="/user/login" style="margin-top: 5rem;">
             <div class="row">
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
@@ -67,7 +67,7 @@
                 <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
-                    <a class="btn btn-link" href="register.jsp">Register</a>
+                    <a class="btn btn-link" href="/register.jsp">Register</a>
                 </div>
             </div>
         </form>
