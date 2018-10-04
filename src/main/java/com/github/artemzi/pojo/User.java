@@ -9,6 +9,14 @@ public class User implements Serializable {
     private String email; // TODO: make field unique
     private String password;
     private String role;
+    private int roleId;
+
+    public User(String name, String email, String password, int roleId) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.roleId = roleId;
+    }
 
     public User(long id, String name, String email, String password, String role) {
         this.id = id;
@@ -56,6 +64,14 @@ public class User implements Serializable {
 
     public void setRole(String role) {
         this.role = role;
+    }
+
+    public int getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
     @Override

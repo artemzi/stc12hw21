@@ -4,7 +4,9 @@ import com.github.artemzi.dao.Factory;
 import com.github.artemzi.dao.contract.DAO;
 import com.github.artemzi.exceptions.DAOException;
 import com.github.artemzi.pojo.User;
+import com.google.common.hash.Hashing;
 
+import java.nio.charset.StandardCharsets;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,13 +31,34 @@ public class UserService implements DAO<User> {
         this.connectionManager = connectionManager;
     }
 
+    public boolean addFromStringsParam(String name, String email, String password, int roleId) {
+        if (!validateParams(name, email, password, roleId)) {
+            return false;
+        }
+
+        String passwordHashed = Hashing.sha256()
+                .hashString(password, StandardCharsets.UTF_8)
+                .toString();
+
+        User user = new User(name, email, passwordHashed, roleId);
+        return add(user);
+    }
+
+    private boolean validateParams(String name, String email, String password, int roleId) {
+        // TODO add proper validation
+        if (name.isEmpty() || email.isEmpty() || password.isEmpty() || roleId < 1 || roleId > 2) {
+            return false;
+        }
+        return true;
+    }
+
     @Override
     public boolean add(User user) {
         Object[] values = {
                 user.getName(),
                 user.getEmail(),
                 user.getPassword(),
-                user.getRole()
+                user.getRoleId()
         };
 
         try (Connection connection = connectionManager.getConnection();
