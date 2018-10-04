@@ -1,6 +1,7 @@
 package com.github.artemzi.services;
 
 import com.github.artemzi.dao.Factory;
+import com.github.artemzi.dao.contract.DAO;
 import com.github.artemzi.exceptions.DAOException;
 import com.github.artemzi.pojo.User;
 
@@ -13,7 +14,7 @@ import java.util.List;
 
 import static com.github.artemzi.dao.Utils.prepareStatement;
 
-public class UserService {
+public class UserService implements DAO {
     private Factory connectionManager;
     private static final String SQL_SELECT_ALL = "SELECT u.id, u.name, u.email, u.password, r.name AS role " +
             "FROM users u JOIN roles r ON r.id = u.role_id";
@@ -26,16 +27,19 @@ public class UserService {
         this.connectionManager = connectionManager;
     }
 
-    public boolean add(String task) {
+    @Override
+    public boolean add(String user) {
         // TODO
         return false;
     }
 
-    public boolean delete(String task) {
+    @Override
+    public boolean delete(String user) {
         // TODO
         return false;
     }
 
+    @Override
     public List<User> getAll() {
         List<User> users = new ArrayList<>();
         try (Connection connection = connectionManager.getConnection();
