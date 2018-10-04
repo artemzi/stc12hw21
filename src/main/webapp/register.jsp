@@ -103,6 +103,7 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Register</button>
+                        <a class="btn btn-link" href="index.jsp">Back to Login page</a>
                     </div>
                 </div>
             </form>
