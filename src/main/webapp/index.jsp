@@ -12,5 +12,6 @@
 <t:default>
     <div class="container">
         <h1>Dashboard</h1>
+        <a href="user/login?action=logout">Logout</a>
     </div>
 </t:default>
