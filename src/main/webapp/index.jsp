@@ -19,9 +19,15 @@
                 <p>
                     <t:userdetail user="${sessionScope.user}"/>
                 </p>
+                <c:choose>
+                    <c:when test="${sessionScope.user.role == \"teacher\"}">
+                        <h3>Your are a teacher and can create tasks for students.</h3>
+                    </c:when>
+                    <c:otherwise>
+                        <h3>Your are a student and can solve tasks from teachers.</h3>
+                    </c:otherwise>
+                </c:choose>
             </c:when>
-            <%--<c:otherwise>--%>
-            <%--</c:otherwise>--%>
         </c:choose>
     </jsp:body>
 </t:default>
