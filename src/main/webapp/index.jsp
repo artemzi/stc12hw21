@@ -13,18 +13,15 @@
 
 <t:default>
     <jsp:body>
-        <div class="container">
-            <h1>Dashboard</h1>
-            <a href="/user/login?action=logout">Logout</a>
-            <c:choose>
-                <c:when test="${sessionScope.user != null}">
-                    <p>
-                        <t:userdetail user="${sessionScope.user}"/>
-                    </p>
-                </c:when>
-                <%--<c:otherwise>--%>
-                <%--</c:otherwise>--%>
-            </c:choose>
-        </div>
+        <h1>Dashboard</h1>
+        <c:choose>
+            <c:when test="${sessionScope.user != null}">
+                <p>
+                    <t:userdetail user="${sessionScope.user}"/>
+                </p>
+            </c:when>
+            <%--<c:otherwise>--%>
+            <%--</c:otherwise>--%>
+        </c:choose>
     </jsp:body>
 </t:default>
