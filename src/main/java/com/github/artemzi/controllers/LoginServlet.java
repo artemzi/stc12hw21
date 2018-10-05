@@ -1,5 +1,6 @@
 package com.github.artemzi.controllers;
 
+import com.github.artemzi.pojo.User;
 import com.github.artemzi.services.UserService;
 
 import javax.servlet.ServletException;
@@ -31,7 +32,9 @@ public class LoginServlet extends HttpServlet {
         String password = req.getParameter("password");
 
         if (userService.checkAuth(email, password)) {
+            User currentUser = userService.getUserByEmail(email);
             req.getSession().setAttribute("authenticated", "success");
+            req.getSession().setAttribute("user", currentUser);
         } else {
             req.getSession().setAttribute("authenticated", "fail");
         }
