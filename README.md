@@ -1,1 +1,1 @@
-App deployed to [Heroku](https://stc12hw21.herokuapp.com/register.jsp)
+App deployed to [Heroku](https://stc12hw21.herokuapp.com)
