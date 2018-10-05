@@ -47,7 +47,9 @@ public class UserService implements DAO<User> {
         if (name.isEmpty() || email.isEmpty() || password.isEmpty() || roleId < 1 || roleId > 2) {
             return false;
         }
-        return true;
+
+        User user = getUserByEmail(email);
+        return user == null; // if user found by email return false
     }
 
     public boolean checkAuth(String email, String password) {

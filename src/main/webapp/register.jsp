@@ -1,5 +1,15 @@
 <%@ page contentType="text/html" pageEncoding="UTF-8" language="java" %>
 <%@taglib prefix="t" tagdir="/WEB-INF/tags" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+
+<%--<c:set var="error" value=""/>--%>
+<%--<%--%>
+    <%--if (session.getAttribute("errorMessage") != null) {--%>
+        <%--pageContext.setAttribute("error", session.getAttribute("errorMessage"));--%>
+        <%--session.removeAttribute("errorMessage");--%>
+    <%--}--%>
+<%--%>--%>
 
 <t:default>
     <jsp:attribute name="scripts">
@@ -20,6 +30,16 @@
                     <div class="col-md-3"></div>
                     <div class="col-md-6">
                         <h2>Please fill all fields</h2>
+                        <c:choose>
+                            <c:when test="${sessionScope.errorMessage != null}">
+                                <div class="alert alert-danger" role="alert">
+                                    <c:out value="${sessionScope.errorMessage}" />
+                                    <c:remove var="errorMessage" scope="session" />
+                                </div>
+                            </c:when>
+                            <%--<c:otherwise>--%>
+                            <%--</c:otherwise>--%>
+                        </c:choose>
                         <hr>
                     </div>
                 </div>
