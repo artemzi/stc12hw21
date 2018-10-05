@@ -57,7 +57,7 @@ public class UserService implements DAO<User> {
         return user != null && user.getPassword().equals(Helpers.hashPassword(password));
     }
 
-    private User getUserByEmail(String email) {
+    public User getUserByEmail(String email) {
         User user = null;
         try (Connection connection = connectionManager.getConnection();
              PreparedStatement statement = prepareStatement(connection, SQL_SELECT_BY_EMAIL, false, email);
