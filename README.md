@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/artemzi/stc12hw21.svg?branch=master)](https://travis-ci.org/artemzi/stc12hw21)
 ![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=stc12hw21-key&metric=sqale_rating)
+![Coverage](https://sonarcloud.io/api/project_badges/measure?project=stc12hw21-key&metric=coverage)
 
 App deployed to [Heroku](https://stc12hw21.herokuapp.com)
 
