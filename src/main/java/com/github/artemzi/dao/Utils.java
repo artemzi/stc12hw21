@@ -6,6 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class Utils {
+    private Utils() {
+    }
+
     public static PreparedStatement prepareStatement
             (Connection connection, String sql, boolean returnGeneratedKeys, Object... values)
             throws SQLException

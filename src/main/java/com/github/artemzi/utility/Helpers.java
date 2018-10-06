@@ -5,6 +5,8 @@ import com.google.common.hash.Hashing;
 import java.nio.charset.StandardCharsets;
 
 public class Helpers {
+    private Helpers() {
+    }
 
     public static String hashPassword(String password) {
         return Hashing.sha256()
