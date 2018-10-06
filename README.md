@@ -1,4 +1,9 @@
+[![Build Status](https://travis-ci.org/artemzi/stc12hw21.svg?branch=master)](https://travis-ci.org/artemzi/stc12hw21)
+![Maintainability](https://sonarcloud.io/api/project_badges/measure?project=stc12hw21-key&metric=sqale_rating)
+
 App deployed to [Heroku](https://stc12hw21.herokuapp.com)
+
+![sonarcloud](https://sonarcloud.io/api/project_badges/quality_gate?project=stc12hw21-key)
 
 - TODO:
 
