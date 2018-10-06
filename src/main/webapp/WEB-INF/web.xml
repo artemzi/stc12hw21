@@ -6,6 +6,19 @@
          version="4.0">
     <display-name>STC12 Home Work 21</display-name>
 
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/error.html</location>
+    </error-page>
+    <error-page>
+        <error-code>404</error-code>
+        <location>/error.html</location>
+    </error-page>
+
     <servlet>
         <servlet-name>RegisterServlet</servlet-name>
         <servlet-class>com.github.artemzi.controllers.RegisterServlet</servlet-class>
