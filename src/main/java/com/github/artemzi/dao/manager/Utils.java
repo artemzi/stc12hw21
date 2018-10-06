@@ -1,4 +1,4 @@
-package com.github.artemzi.dao;
+package com.github.artemzi.dao.manager;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

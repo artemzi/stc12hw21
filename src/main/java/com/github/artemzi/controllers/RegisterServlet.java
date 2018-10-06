@@ -24,7 +24,7 @@ public class RegisterServlet extends HttpServlet {
             LOGGER.error(e);
         }
 
-        boolean success = userService.addFromStringsParam(name, email, pass, roleId);
+        boolean success = userService.addUser(name, email, pass, roleId);
         if (success) {
             LOGGER.info("Successfully register new user");
             try {

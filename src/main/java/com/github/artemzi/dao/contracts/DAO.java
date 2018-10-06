@@ -1,4 +1,4 @@
-package com.github.artemzi.dao.contract;
+package com.github.artemzi.dao.contracts;
 
 import java.util.List;
 

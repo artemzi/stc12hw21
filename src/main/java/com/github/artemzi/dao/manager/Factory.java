@@ -1,4 +1,4 @@
-package com.github.artemzi.dao;
+package com.github.artemzi.dao.manager;
 
 import com.github.artemzi.exceptions.ConfigurationException;
 
@@ -6,7 +6,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 /**
- * Create connection contract based on provided options
+ * Create connection contracts based on provided options
  */
 public abstract class Factory {
     private static final String PROPERTY_URL = "url";
