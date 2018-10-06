@@ -2,6 +2,7 @@
 out
 
 database.properties
+database.properties.heroku
 
 # env files
 *.out
