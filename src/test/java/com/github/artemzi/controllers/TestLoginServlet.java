@@ -16,7 +16,6 @@ import javax.servlet.http.HttpSession;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
-@Ignore // TODO: fix failing tests on travis (java.lang.NoClassDefFoundError at TestLoginServlet.java:25)
 class TestLoginServlet {
     @Mock private HttpSession session;
     @Mock private RequestDispatcher dispatcher;
@@ -24,7 +23,7 @@ class TestLoginServlet {
 
     @BeforeEach void setUp() {
         MockitoAnnotations.initMocks(this);
-        srv = new LoginServlet();
+        srv = new com.github.artemzi.controllers.LoginServlet();
     }
 
     @Test void testDoGet() {

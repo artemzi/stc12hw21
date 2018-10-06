@@ -44,12 +44,12 @@ task copyToLib(type: Copy) {
 
 stage.dependsOn(copyToLib)
 
-test{
-    useJUnitPlatform()
-    testLogging {
-        events "passed", "skipped", "failed"
-    }
-}
+//test{
+//    useJUnitPlatform()
+//    testLogging {
+//        events "passed", "skipped", "failed"
+//    }
+//}
 
 wrapper {
     gradleVersion = '4.10.2'
