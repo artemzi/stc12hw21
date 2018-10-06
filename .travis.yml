@@ -29,11 +29,14 @@ addons:
     token:
       secure: $SONARCLOUD_TOKEN
 
+before_install:
+  - chmod +x gradlew
+
 script:
-- ./gradlew assemble
-- ./gradlew check --rerun-tasks
-- sonar-scanner
-- rm -rf .scannerwork
+  - ./gradlew assemble
+  - ./gradlew check --rerun-tasks
+  - sonar-scanner
+  - rm -rf .scannerwork
 
 notifications:
   email:
