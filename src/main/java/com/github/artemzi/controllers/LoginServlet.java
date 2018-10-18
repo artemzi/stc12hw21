@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class LoginServlet extends HttpServlet {
-    private final UserService userService = new UserService();
     private static final Logger LOGGER = Logger.getLogger(LoginServlet.class.getName());
 
     @Override
@@ -35,8 +34,8 @@ public class LoginServlet extends HttpServlet {
         String email = req.getParameter("email");
         String password = req.getParameter("password");
 
-        if (userService.checkAuth(email, password)) {
-            User currentUser = userService.getUserByEmail(email);
+        if (UserService.getInstance().checkAuth(email, password)) {
+            User currentUser = UserService.getInstance().getUserByEmail(email);
             LOGGER.info("Successfully log in user: " + currentUser);
             req.getSession().setAttribute("authenticated", "success");
             req.getSession().setAttribute("user", currentUser);
