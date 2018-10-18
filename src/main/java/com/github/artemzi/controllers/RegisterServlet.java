@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class RegisterServlet extends HttpServlet {
-    private final UserService userService = new UserService();
     private static final Logger LOGGER = Logger.getLogger(RegisterServlet.class.getName());
 
     @Override
@@ -24,7 +23,7 @@ public class RegisterServlet extends HttpServlet {
             LOGGER.error(e);
         }
 
-        boolean success = userService.addUser(name, email, pass, roleId);
+        boolean success = UserService.getInstance().addUser(name, email, pass, roleId);
         if (success) {
             LOGGER.info("Successfully register new user");
             try {
