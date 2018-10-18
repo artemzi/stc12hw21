@@ -1,4 +1,4 @@
-package com.github.artemzi.dao;
+package com.github.artemzi.dao.manager;
 
 import com.github.artemzi.exceptions.ConfigurationException;
 
