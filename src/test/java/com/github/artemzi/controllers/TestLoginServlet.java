@@ -1,7 +1,10 @@
 package com.github.artemzi.controllers;
 
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runner.Runner;
+import org.junit.runners.JUnit4;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
@@ -12,20 +15,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.*;
 
-class TestLoginServlet {
+public class TestLoginServlet {
+    public TestLoginServlet() {
+    }
+
     @Mock private HttpSession session;
     @Mock private RequestDispatcher dispatcher;
     private LoginServlet srv;
 
-    @BeforeEach void setUp() {
+    @Before public void setUp() {
         MockitoAnnotations.initMocks(this);
         srv = new com.github.artemzi.controllers.LoginServlet();
     }
 
-    @Test void testDoGet() {
+    @Test public void testDoGet() {
         srv = Mockito.spy(srv);
 
         HttpServletRequest request = mock(HttpServletRequest.class);
@@ -44,7 +50,7 @@ class TestLoginServlet {
         assertEquals("/login.jsp", dispatcherArgument.getValue());
     }
 
-    @Test void testDoPost() {
+    @Test public void testDoPost() {
         srv = Mockito.spy(srv);
 
         HttpServletRequest request = mock(HttpServletRequest.class);
