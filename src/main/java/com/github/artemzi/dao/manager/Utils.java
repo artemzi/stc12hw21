@@ -19,11 +19,13 @@ public class Utils {
         return statement;
     }
 
-    public static void setValues(PreparedStatement statement, Object... values)
+    public static boolean setValues(PreparedStatement statement, Object... values)
             throws SQLException
     {
         for (int i = 0; i < values.length; i++) {
             statement.setObject(i + 1, values[i]);
         }
+
+        return true;
     }
 }
