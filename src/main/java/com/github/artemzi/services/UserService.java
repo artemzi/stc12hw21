@@ -5,9 +5,10 @@ import com.github.artemzi.dao.UserDaoImpl;
 import com.github.artemzi.pojo.User;
 
 public class UserService {
+    private static UserService instance;
     private UserDao userDAO;
 
-    public UserService() {
+    private UserService() {
         this.userDAO = new UserDaoImpl();
     }
 
@@ -21,5 +22,13 @@ public class UserService {
 
     public boolean addUser(String name, String email, String password, int roleId) {
         return this.userDAO.addFromStringsParam(name, email, password, roleId);
+    }
+
+    public static UserService getInstance() {
+        if (instance == null) {
+            instance = new UserService();
+        }
+
+        return instance;
     }
 }
